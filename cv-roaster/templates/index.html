@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Roaster</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CV Roaster</h1>
+            <p class="subtitle">Upload your CV. Get feedback that actually helps.</p>
+        </header>
+
+        <div id="toast" class="toast hidden" role="alert" aria-live="assertive"></div>
+
+        <section id="upload-section" class="card">
+            <div id="drop-zone" class="drop-zone" tabindex="0" role="button"
+                 aria-label="Upload your CV. PDF, DOCX, or TXT, max 5 megabytes">
+                <div class="drop-zone-inner">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <p>Drop your CV here or <span class="link">browse</span></p>
+                    <p class="hint">PDF, DOCX, or TXT (max 5MB)</p>
+                </div>
+                <input type="file" id="file-input" accept=".pdf,.docx,.txt" hidden>
+            </div>
+            <div id="file-info" class="file-info hidden">
+                <span id="file-name"></span>
+                <button id="remove-file" class="btn-icon" title="Remove">&times;</button>
+            </div>
+            <button id="upload-btn" class="btn btn-primary hidden">Upload CV</button>
+        </section>
+
+        <section id="actions-section" class="hidden">
+            <div class="actions-grid">
+                <button class="action-card" data-action="roast">
+                    <span class="action-icon" aria-hidden="true">&#x1F525;</span>
+                    <span class="action-title">Roast My CV</span>
+                    <span class="action-desc">Brutally honest HR feedback</span>
+                </button>
+                <button class="action-card" data-action="improve">
+                    <span class="action-icon" aria-hidden="true">&#x1F4A1;</span>
+                    <span class="action-title">Improve It</span>
+                    <span class="action-desc">Actionable tips &amp; fixes</span>
+                </button>
+                <button class="action-card" data-action="generate">
+                    <span class="action-icon" aria-hidden="true">&#x2728;</span>
+                    <span class="action-title">Rewrite CV</span>
+                    <span class="action-desc">Polished version in your style</span>
+                </button>
+                <button class="action-card" data-action="stealth">
+                    <span class="action-icon" aria-hidden="true">&#x1F916;</span>
+                    <span class="action-title">ATS Optimize</span>
+                    <span class="action-desc">Beat the AI screeners</span>
+                </button>
+            </div>
+            <button id="new-cv-btn" class="btn btn-secondary">Upload Different CV</button>
+        </section>
+
+        <section id="result-section" class="hidden">
+            <div class="card result-card">
+                <div class="result-header">
+                    <h2 id="result-title"></h2>
+                    <button id="copy-btn" class="btn btn-small">Copy</button>
+                </div>
+                <div id="result-content" class="result-content"></div>
+            </div>
+            <button id="back-btn" class="btn btn-secondary">Try Another Action</button>
+        </section>
+
+        <div id="loading" class="loading hidden" role="status" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <p id="loading-text">Analyzing your CV...</p>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
